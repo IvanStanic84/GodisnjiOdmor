@@ -15,7 +15,6 @@ public class GodisnjiOdmor {
     /*public GodisnjiOdmor() {
         new SplashScreen().setVisible(true);
     }*/
-
     public static void main(String[] args) {
         new GodisnjiOdmor();
     }
