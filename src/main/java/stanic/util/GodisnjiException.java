@@ -8,19 +8,17 @@ package stanic.util;
  *
  * @author Korisnik
  */
-public class GodisnjiException extends Exception{
-
+public class GodisnjiException extends Exception {
 
     private String poruka;
 
     public GodisnjiException(String poruka) {
         super(poruka);
-        this.poruka=poruka;
+        this.poruka = poruka;
     }
 
     public String getPoruka() {
         return poruka;
     }
 
-}    
-
+}

@@ -16,8 +16,8 @@ public class Zaposlenik extends Entitet {
     private String prezime;
     private String oib;
     private int ukupniBrojDana;
-    
-     @ManyToOne
+
+    @ManyToOne
     private Godisnji godisnji;
 
     public String getIme() {
@@ -59,7 +59,6 @@ public class Zaposlenik extends Entitet {
     public void setGodisnji(Godisnji godisnji) {
         this.godisnji = godisnji;
     }
-   
 
     public Zaposlenik() {
     }
@@ -80,7 +79,7 @@ public class Zaposlenik extends Entitet {
         this.ukupniBrojDana = ukupniBrojDana;
         this.godisnji = godisnji;
     }
-    
+
     @Override
     public String toString() {
         return ime + " " + prezime;

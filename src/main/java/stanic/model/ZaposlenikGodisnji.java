@@ -9,5 +9,5 @@ package stanic.model;
  * @author Korisnik
  */
 public class ZaposlenikGodisnji {
-    
+
 }

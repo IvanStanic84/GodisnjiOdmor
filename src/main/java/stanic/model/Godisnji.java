@@ -11,11 +11,11 @@ import java.util.Date;
  *
  * @author Korisnik
  */
-public class Godisnji extends Entitet{
-    
+public class Godisnji extends Entitet {
+
     private Date pocetak;
     private Date kraj;
-    
+
     @ManyToOne
     private Zaposlenik zaposlenik;
 
@@ -48,8 +48,9 @@ public class Godisnji extends Entitet{
     public void setKraj(Date kraj) {
         this.kraj = kraj;
     }
-@Override
+
+    @Override
     public String toString() {
         return zaposlenik.getIme() + " " + zaposlenik.getPrezime();
-    }    
+    }
 }
