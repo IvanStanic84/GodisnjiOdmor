@@ -4,17 +4,16 @@
  */
 package stanic.godisnjiodmor;
 
-import java.awt.SplashScreen;
-
 /**
  *
  * @author Korisnik
  */
 public class GodisnjiOdmor {
 
-    /*public GodisnjiOdmor() {
-        new SplashScreen().setVisible(true);
-    }*/
+    public GodisnjiOdmor() {
+        new stanic.view.SplashScreen().setVisible(true);
+    }
+
     public static void main(String[] args) {
         new GodisnjiOdmor();
     }
