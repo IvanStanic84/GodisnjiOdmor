@@ -17,7 +17,7 @@ public class Zaposlenik extends Entitet {
     private String oib;
     private int ukupniBrojDana;
 
-    @ManyToOne
+   
     private Godisnji godisnji;
 
     public String getIme() {

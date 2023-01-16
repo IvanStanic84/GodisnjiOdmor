@@ -5,6 +5,7 @@
 package stanic.model;
 
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import java.util.Date;
 
 /**
@@ -15,9 +16,9 @@ public class Godisnji extends Entitet {
 
     private Date pocetak;
     private Date kraj;
-
-    @ManyToOne
-    private Zaposlenik zaposlenik;
+/*
+    @OneToMany
+    private Zaposlenik zaposlenik;*/
 
     public Godisnji(Date pocetak, Date kraj) {
         this.pocetak = pocetak;
@@ -48,9 +49,9 @@ public class Godisnji extends Entitet {
     public void setKraj(Date kraj) {
         this.kraj = kraj;
     }
-
+/*
     @Override
     public String toString() {
         return zaposlenik.getIme() + " " + zaposlenik.getPrezime();
-    }
+    }*/
 }
