@@ -4,6 +4,7 @@
  */
 package stanic.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
  *
  * @author Korisnik
  */
+@Entity
 public class Godisnji extends Entitet {
 
     private Date pocetak;

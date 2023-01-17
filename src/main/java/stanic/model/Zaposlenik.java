@@ -4,12 +4,14 @@
  */
 package stanic.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 
 /**
  *
  * @author Korisnik
  */
+@Entity
 public class Zaposlenik extends Entitet {
 
     private String ime;
@@ -18,7 +20,6 @@ public class Zaposlenik extends Entitet {
     private int ukupniBrojDana;
 
    
-    private Godisnji godisnji;
 
     public String getIme() {
         return ime;
@@ -52,32 +53,26 @@ public class Zaposlenik extends Entitet {
         this.ukupniBrojDana = ukupniBrojDana;
     }
 
-    public Godisnji getGodisnji() {
-        return godisnji;
-    }
-
-    public void setGodisnji(Godisnji godisnji) {
-        this.godisnji = godisnji;
-    }
+  
 
     public Zaposlenik() {
     }
 
-    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana, Godisnji godisnji) {
+    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana) {
         this.ime = ime;
         this.prezime = prezime;
         this.oib = oib;
         this.ukupniBrojDana = ukupniBrojDana;
-        this.godisnji = godisnji;
+       
     }
 
-    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana, Godisnji godisnji, Integer sifra) {
+    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana, Integer sifra) {
         super(sifra);
         this.ime = ime;
         this.prezime = prezime;
         this.oib = oib;
         this.ukupniBrojDana = ukupniBrojDana;
-        this.godisnji = godisnji;
+      
     }
 
     @Override

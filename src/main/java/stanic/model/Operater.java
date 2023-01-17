@@ -4,10 +4,13 @@
  */
 package stanic.model;
 
+import jakarta.persistence.Entity;
+
 /**
  *
  * @author Korisnik
  */
+@Entity
 public class Operater extends Entitet {
 
     private String ime;
