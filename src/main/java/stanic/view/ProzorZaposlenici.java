@@ -4,52 +4,17 @@
  */
 package stanic.view;
 
-import javax.swing.JOptionPane;
-import org.hibernate.Session;
-import stanic.controller.ObradaOperater;
-import stanic.util.HibernateUtil;
-import stanic.util.PocetniInsert;
-
 /**
  *
  * @author Korisnik
  */
-public class SplashScreen extends javax.swing.JFrame {
+public class ProzorZaposlenici extends javax.swing.JFrame {
 
     /**
-     * Creates new form SplashScreen
+     * Creates new form ProzorZaposlenici
      */
-    public SplashScreen() {
+    public ProzorZaposlenici() {
         initComponents();
-
-        ucitaj();
-    }
-
-    private void ucitaj() {
-        Ucitanje u = new Ucitanje();
-        u.start();
-    }
-
-    private class Ucitanje extends Thread {
-
-        @Override
-        public void run() {
-
-            Session s = HibernateUtil.getSession();
-            if (!s.getMetamodel().getEntities().isEmpty()) {
-                ObradaOperater op = new ObradaOperater();
-                if (op.read().isEmpty()) {
-                    new PocetniInsert();
-                }
-
-                new Login().setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Problem s bazom podataka");
-            }
-
-        }
-
     }
 
     /**
@@ -61,7 +26,7 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

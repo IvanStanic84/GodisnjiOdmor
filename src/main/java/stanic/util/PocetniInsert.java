@@ -45,7 +45,7 @@ public class PocetniInsert {
     private void kreirajOperatera() {
         Operater o = new Operater();
         o.setIme("Ivan");
-        o.setPrezime("Stanić");
+        o.setPrezime("Stanic");
         o.setOib("70515566734");
         o.setLozinka(BCrypt.hashpw("stamba", BCrypt.gensalt()));
         sess.persist(o);
@@ -78,8 +78,7 @@ public class PocetniInsert {
         sess.persist(go);
         return go;
     }
-    
-    
+
     private void kreirajZaposlenike() {
         zaposlenici.add(prviZaposlenik());
     }
@@ -87,11 +86,10 @@ public class PocetniInsert {
     private Zaposlenik prviZaposlenik() {
         Zaposlenik z = new Zaposlenik();
 
-       z.setIme("Pero");
-       z.setPrezime("Perić");
-       z.setOib("76734269357");
-       z.setUkupniBrojDana(30);
-     
+        z.setIme("Pero");
+        z.setPrezime("Perić");
+        z.setOib("76734269357");
+        z.setUkupniBrojDana(30);
 
         sess.persist(z);
         return z;
