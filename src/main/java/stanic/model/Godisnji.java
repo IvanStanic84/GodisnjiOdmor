@@ -18,23 +18,25 @@ public class Godisnji extends Entitet {
 
     private Date pocetak;
     private Date kraj;
-/*
-    @OneToMany
-    private Zaposlenik zaposlenik;*/
 
-    public Godisnji(Date pocetak, Date kraj) {
-        this.pocetak = pocetak;
-        this.kraj = kraj;
-    }
-
-    public Godisnji(Date pocetak, Date kraj, Integer sifra) {
-        super(sifra);
-        this.pocetak = pocetak;
-        this.kraj = kraj;
-    }
+    @ManyToOne
+    private Zaposlenik zaposlenik;
 
     public Godisnji() {
     }
+
+    public Godisnji(Date pocetak, Date kraj, Zaposlenik zaposlenik, Integer sifra) {
+        super(sifra);
+        this.pocetak = pocetak;
+        this.kraj = kraj;
+        this.zaposlenik = zaposlenik;
+    }
+
+    
+
+
+   
+
 
     public Date getPocetak() {
         return pocetak;
@@ -51,9 +53,20 @@ public class Godisnji extends Entitet {
     public void setKraj(Date kraj) {
         this.kraj = kraj;
     }
-/*
+
+    public Zaposlenik getZaposlenik() {
+        return zaposlenik;
+    }
+
+    public void setZaposlenik(Zaposlenik zaposlenik) {
+        this.zaposlenik = zaposlenik;
+    }
+    
+    
+    
+    
     @Override
     public String toString() {
         return zaposlenik.getIme() + " " + zaposlenik.getPrezime();
-    }*/
+    }
 }

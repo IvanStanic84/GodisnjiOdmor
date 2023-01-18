@@ -35,7 +35,7 @@ public class PocetniInsert {
         sess.beginTransaction();
 
         kreirajGodisnjeOdmore();
-        kreirajZaposlenike();
+       // kreirajZaposlenike();
 
         kreirajOperatera();
         sess.getTransaction().commit();
@@ -78,7 +78,7 @@ public class PocetniInsert {
         sess.persist(go);
         return go;
     }
-
+/*
     private void kreirajZaposlenike() {
         zaposlenici.add(prviZaposlenik());
     }
@@ -93,6 +93,6 @@ public class PocetniInsert {
 
         sess.persist(z);
         return z;
-    }
+    }*/
 
 }

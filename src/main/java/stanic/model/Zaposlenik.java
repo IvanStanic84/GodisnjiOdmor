@@ -5,7 +5,9 @@
 package stanic.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 /**
  *
@@ -17,9 +19,18 @@ public class Zaposlenik extends Entitet {
     private String ime;
     private String prezime;
     private String oib;
-    private int ukupniBrojDana;
+    private Integer ukupniBrojDana;
 
-   
+    public Zaposlenik(String ime, String prezime, String oib, Integer ukupniBrojDana, Integer sifra) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.oib = oib;
+        this.ukupniBrojDana = ukupniBrojDana;
+
+    }
+
+    @OneToMany(mappedBy = "zaposlenik")
+    private List<Godisnji> odmori;
 
     public String getIme() {
         return ime;
@@ -49,30 +60,20 @@ public class Zaposlenik extends Entitet {
         return ukupniBrojDana;
     }
 
-    public void setUkupniBrojDana(int ukupniBrojDana) {
+    public void setUkupniBrojDana(Integer ukupniBrojDana) {
         this.ukupniBrojDana = ukupniBrojDana;
     }
-
-  
 
     public Zaposlenik() {
+        super();
     }
 
-    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana) {
-        this.ime = ime;
-        this.prezime = prezime;
-        this.oib = oib;
-        this.ukupniBrojDana = ukupniBrojDana;
-       
+    public List<Godisnji> getOdmori() {
+        return odmori;
     }
 
-    public Zaposlenik(String ime, String prezime, String oib, int ukupniBrojDana, Integer sifra) {
-        super(sifra);
-        this.ime = ime;
-        this.prezime = prezime;
-        this.oib = oib;
-        this.ukupniBrojDana = ukupniBrojDana;
-      
+    public void setOdmori(List<Godisnji> odmori) {
+        this.odmori = odmori;
     }
 
     @Override
