@@ -8,12 +8,12 @@ package stanic.view;
  *
  * @author Korisnik
  */
-public class ProzorZaposlenici extends javax.swing.JFrame {
+public class ProzorGodisnji extends javax.swing.JFrame {
 
     /**
-     * Creates new form ProzorZaposlenici
+     * Creates new form ProzorGodisnjiOdmori
      */
-    public ProzorZaposlenici() {
+    public ProzorGodisnji() {
         initComponents();
     }
 
