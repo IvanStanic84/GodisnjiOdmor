@@ -46,7 +46,7 @@ public class ProzorZaposlenik extends javax.swing.JFrame {
         txtIme.setText(s.getIme());
         txtPrezime.setText(s.getPrezime());
         txtOib.setText(s.getOib());
-        txtUkupanBrojDana.setText(String.valueOf(s.getUkupniBrojDana()));
+        txtUkupanBrojDana.setText(String.valueOf(s.getUkupanBrojDana()));
     }
 
     private void popuniModel() {
@@ -56,9 +56,9 @@ public class ProzorZaposlenik extends javax.swing.JFrame {
         s.setPrezime(txtPrezime.getText());
         s.setOib(txtOib.getText());
         try {
-            s.setUkupniBrojDana(Integer.parseInt(txtUkupanBrojDana.getText()));
+            s.setUkupanBrojDana(Integer.parseInt(txtUkupanBrojDana.getText()));
         } catch (Exception e) {
-            s.setUkupniBrojDana(0);
+            s.setUkupanBrojDana(0);
         }
 
     }

@@ -19,13 +19,13 @@ public class Zaposlenik extends Entitet {
     private String ime;
     private String prezime;
     private String oib;
-    private Integer ukupniBrojDana;
+    private Integer ukupanBrojDana;
 
-    public Zaposlenik(String ime, String prezime, String oib, Integer ukupniBrojDana, Integer sifra) {
+    public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {
         this.ime = ime;
         this.prezime = prezime;
         this.oib = oib;
-        this.ukupniBrojDana = ukupniBrojDana;
+        this.ukupanBrojDana = ukupanBrojDana;
 
     }
 
@@ -56,12 +56,12 @@ public class Zaposlenik extends Entitet {
         this.oib = oib;
     }
 
-    public int getUkupniBrojDana() {
-        return ukupniBrojDana;
+    public int getUkupanBrojDana() {
+        return ukupanBrojDana;
     }
 
-    public void setUkupniBrojDana(Integer ukupniBrojDana) {
-        this.ukupniBrojDana = ukupniBrojDana;
+    public void setUkupanBrojDana(Integer ukupanBrojDana) {
+        this.ukupanBrojDana = ukupanBrojDana;
     }
 
     public Zaposlenik() {
