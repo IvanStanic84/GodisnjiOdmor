@@ -6,6 +6,8 @@ package stanic.view;
 
 import stanic.controller.Obrada;
 import stanic.controller.ObradaGodisnji;
+import stanic.controller.ObradaZaposlenik;
+import stanic.util.Pomocno;
 
 /**
  *
@@ -14,24 +16,32 @@ import stanic.controller.ObradaGodisnji;
 public class ProzorGodisnji extends javax.swing.JFrame {
 
     private ObradaGodisnji obrada;
+    private ObradaZaposlenik obradaZaposlenik;
+    private Izbornik izbornik;
     private int selectedIndex;
 
     /**
      * Creates new form ProzorGodisnjiOdmori
      */
     public ProzorGodisnji() {
-        initComponents();
+        this.izbornik = izbornik;
+        obrada = new ObradaGodisnji();
+        obradaZaposlenik = new ObradaZaposlenik();
+        selectedIndex = 0;
+        postavke();
+        ucitaj();
     }
 
-    /* private void tblGodisnjiMouseClicked(java.awt.event.MouseEvent evt) {                                        
-       
+    private void postavke() {
+        setTitle(Pomocno.NAZIV_APLIKACIJE + " "
+                + " Godisnji odmori");
+        // ucitajZaposlenike();
+    }
 
-        GodisnjiTableModel pm = (GodisnjiTableModel) tblGodisnji.getModel();
+    private void ucitaj() {
+        tblGodisnji.setModel(new GodisnjiTableModel(obrada.read()));
+    }
 
-        Obrada.setEntitet(pm.getGodisnji(tblGodisnji.getSelectedRow()));
-        // poziv popuni view
-        popuniView();
-    }   */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +52,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstZaposleniciUBazi = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         txtUkupanBrojDana = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -56,8 +66,8 @@ public class ProzorGodisnji extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        lstZaposleniciUBazi.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(lstZaposleniciUBazi);
 
         jLabel1.setText("Ukupan broj dana");
 
@@ -80,6 +90,11 @@ public class ProzorGodisnji extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblGodisnji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGodisnjiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblGodisnji);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,7 +158,15 @@ public class ProzorGodisnji extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblGodisnjiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGodisnjiMouseClicked
+
+        GodisnjiTableModel pm = (GodisnjiTableModel) tblGodisnji.getModel();
+        obrada.setEntitet(pm.getGodisnji(tblGodisnji.getSelectedRow()));
+
+        popuniView();    }//GEN-LAST:event_tblGodisnjiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -152,12 +175,16 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> lstZaposleniciUBazi;
     private javax.swing.JTable tblGodisnji;
     private javax.swing.JTextField txtPlaniranoDana;
     private javax.swing.JTextField txtPreostaloDana;
     private javax.swing.JTextField txtUkupanBrojDana;
     // End of variables declaration//GEN-END:variables
+
+    private void popuniView() {
+
+    }
 }
