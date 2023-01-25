@@ -51,15 +51,15 @@ public class GodisnjiTableModel extends AbstractTableModel {
                 } else {
                     return "";
                 }
-            case 2:
+            case 1:
                 if (p.getKraj() != null) {
                     return df.format(p.getKraj());
                 } else {
                     return "";
                 }
-           /* case 3:
-                return p.isPlaceno();
-            case 4:
+            case 3:
+                return p.getZaposlenik().getUkupanBrojDana();
+         /*   case 4:
                 return p.isRoditeljskaPratnja();
             case 5:
                 return p.isGratis();

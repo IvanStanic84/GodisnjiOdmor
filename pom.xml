@@ -20,7 +20,7 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>3.0.3</version>
         </dependency>
-        <!-- Čitati https://github.com/tjakopec/ORM_JAVA_PHP_CSHARP -->
+     
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
