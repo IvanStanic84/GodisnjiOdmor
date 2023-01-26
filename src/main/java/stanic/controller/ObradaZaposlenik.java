@@ -38,13 +38,13 @@ public class ObradaZaposlenik extends Obrada<Zaposlenik> {
 
     @Override
     protected void kontrolaDelete() throws GodisnjiException {
-       /*Integer i = session.createNativeQuery(
+        /*Integer i = session.createNativeQuery(
                 "select count(*) from godisnji where zaposlenik_sifra=:p",
                 Integer.class).setParameter("p", entitet.getSifra()).getSingleResult();
         if (i > 0) {
             throw new GodisnjiException("Zaposlenik ima unesene godišnje odmore pa se ne može obrisati");
         }
-*/
+         */
     }
 
     @Override
@@ -73,7 +73,7 @@ public class ObradaZaposlenik extends Obrada<Zaposlenik> {
     }
 
     private void kontrolaOib() throws GodisnjiException {
-       /*if (!Pomocno.kontrolaOib(entitet.getOib())) {
+        /*if (!Pomocno.kontrolaOib(entitet.getOib())) {
             throw new GodisnjiException("OIB nije ispravan");
         }*/
     }

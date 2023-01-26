@@ -21,6 +21,8 @@ public class Zaposlenik extends Entitet {
     private String oib;
     private Integer ukupanBrojDana;
 
+    //@OneToMany(mappedBy = "zaposlenik")
+    //private List<ZaposlenikGodisnji> zaposleniciUBazi;
     public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {
         this.ime = ime;
         this.prezime = prezime;

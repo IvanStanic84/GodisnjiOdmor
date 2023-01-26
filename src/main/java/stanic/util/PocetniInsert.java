@@ -20,28 +20,27 @@ import stanic.model.Zaposlenik;
  * @author Korisnik
  */
 public class PocetniInsert {
-
+    
     private List<Godisnji> odmori;
     private List<Zaposlenik> zaposlenici;
     private Session sess;
-
+    
     public PocetniInsert() {
-
+        
         odmori = new ArrayList<>();
         zaposlenici = new ArrayList<>();
-
+        
         sess = HibernateUtil.getSession();
-
+        
         sess.beginTransaction();
-
+        kreirajZaposlenike();
         kreirajGodisnjeOdmore();
-       kreirajZaposlenike();
-
+        
         kreirajOperatera();
         sess.getTransaction().commit();
         HibernateUtil.reset();
     }
-
+    
     private void kreirajOperatera() {
         Operater o = new Operater();
         o.setIme("Ivan");
@@ -49,9 +48,9 @@ public class PocetniInsert {
         o.setOib("70515566734");
         o.setLozinka(BCrypt.hashpw("stamba", BCrypt.gensalt()));
         sess.persist(o);
-
+        
     }
-
+    
     private Date createDate(int godina, int mjesec,
             int dan, int sat, int minute) {
         GregorianCalendar gc = (GregorianCalendar) Calendar.getInstance();
@@ -64,33 +63,33 @@ public class PocetniInsert {
         gc.set((Calendar.MILLISECOND), 0);
         return gc.getTime();
     }
-
+    
     private void kreirajGodisnjeOdmore() {
         odmori.add(prviOdmor());
     }
-
+    
     private Godisnji prviOdmor() {
         Godisnji go = new Godisnji();
-
+        go.setZaposlenik(prviZaposlenik());
         go.setPocetak(createDate(2022, 10, 03, 9, 0));
         go.setKraj(createDate(2022, 10, 03, 12, 0));
-
+        
         sess.persist(go);
         return go;
     }
-
+    
     private void kreirajZaposlenike() {
         zaposlenici.add(prviZaposlenik());
     }
-
+    
     private Zaposlenik prviZaposlenik() {
         Zaposlenik z = new Zaposlenik();
-
+        
         z.setIme("Pero");
         z.setPrezime("Perić");
         z.setOib("76734269357");
         z.setUkupanBrojDana(30);
-
+        
         sess.persist(z);
         return z;
     }

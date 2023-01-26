@@ -14,11 +14,10 @@ import java.util.Date;
  * @author Korisnik
  */
 @Entity
-public class Godisnji extends Entitet{
+public class Godisnji extends Entitet {
 
     private Date pocetak;
     private Date kraj;
-   
 
     @ManyToOne
     private Zaposlenik zaposlenik;
@@ -32,12 +31,6 @@ public class Godisnji extends Entitet{
         this.kraj = kraj;
         this.zaposlenik = zaposlenik;
     }
-
-    
-
-
-   
-
 
     public Date getPocetak() {
         return pocetak;
@@ -62,10 +55,7 @@ public class Godisnji extends Entitet{
     public void setZaposlenik(Zaposlenik zaposlenik) {
         this.zaposlenik = zaposlenik;
     }
-    
-    
-    
-    
+
     @Override
     public String toString() {
         return zaposlenik.getIme() + " " + zaposlenik.getPrezime();
