@@ -35,7 +35,7 @@ public class PocetniInsert {
         sess.beginTransaction();
 
         kreirajGodisnjeOdmore();
-       // kreirajZaposlenike();
+       kreirajZaposlenike();
 
         kreirajOperatera();
         sess.getTransaction().commit();
@@ -78,7 +78,7 @@ public class PocetniInsert {
         sess.persist(go);
         return go;
     }
-/*
+
     private void kreirajZaposlenike() {
         zaposlenici.add(prviZaposlenik());
     }
@@ -89,10 +89,9 @@ public class PocetniInsert {
         z.setIme("Pero");
         z.setPrezime("Perić");
         z.setOib("76734269357");
-        z.setUkupniBrojDana(30);
+        z.setUkupanBrojDana(30);
 
         sess.persist(z);
         return z;
-    }*/
-
+    }
 }

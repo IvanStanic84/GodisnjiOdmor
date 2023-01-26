@@ -4,9 +4,16 @@
  */
 package stanic.view;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import java.util.Locale;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import stanic.controller.Obrada;
 import stanic.controller.ObradaGodisnji;
 import stanic.controller.ObradaZaposlenik;
+import stanic.model.Zaposlenik;
+import stanic.util.GodisnjiException;
 import stanic.util.Pomocno;
 
 /**
@@ -14,7 +21,7 @@ import stanic.util.Pomocno;
  * @author Korisnik
  */
 public class ProzorGodisnji extends javax.swing.JFrame {
-
+    
     private ObradaGodisnji obrada;
     private ObradaZaposlenik obradaZaposlenik;
     private Izbornik izbornik;
@@ -35,11 +42,14 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private void postavke() {
         setTitle(Pomocno.NAZIV_APLIKACIJE + " "
                 + " Godisnji odmori");
-        // ucitajZaposlenike();
+        //ucitajZaposlenike();
     }
 
     private void ucitaj() {
-        tblGodisnji.setModel(new GodisnjiTableModel(obrada.read()));
+     // tblGodisnji = new GodisnjiTableModel();
+       tblGodisnji.setModel(new GodisnjiTableModel(obrada.read()));
+            
+        
     }
 
     /**
@@ -67,6 +77,11 @@ public class ProzorGodisnji extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lstZaposleniciUBazi.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstZaposleniciUBazi.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstZaposleniciUBaziValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstZaposleniciUBazi);
 
         jLabel1.setText("Ukupan broj dana");
@@ -76,20 +91,45 @@ public class ProzorGodisnji extends javax.swing.JFrame {
         jLabel3.setText("Preostalo dana");
 
         btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
 
         btnOdustani.setText("Odustani");
+        btnOdustani.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOdustaniActionPerformed(evt);
+            }
+        });
 
         tblGodisnji.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Početak GO", "Završetak GO", "Iskorišteno dana GO"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblGodisnji.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblGodisnjiMouseClicked(evt);
@@ -168,6 +208,40 @@ public class ProzorGodisnji extends javax.swing.JFrame {
 
         popuniView();    }//GEN-LAST:event_tblGodisnjiMouseClicked
 
+    private void lstZaposleniciUBaziValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstZaposleniciUBaziValueChanged
+
+        if (evt.getValueIsAdjusting()
+                || lstZaposleniciUBazi.getSelectedValue() == null) {
+            pocistiView();
+            return;
+        }
+
+    }//GEN-LAST:event_lstZaposleniciUBaziValueChanged
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        if (obrada.getEntitet() == null) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Prvo odaberite zaposlenika");
+            return;
+        }
+        popuniModel();
+
+        try {
+            obrada.update();
+            ucitaj();
+        } catch (GodisnjiException e) {
+            obrada.refresh();
+            JOptionPane.showMessageDialog(rootPane,
+                    e.getPoruka());
+        }    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdustaniActionPerformed
+
+        ucitaj();
+        
+
+    }//GEN-LAST:event_btnOdustaniActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOdustani;
@@ -184,7 +258,30 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private javax.swing.JTextField txtUkupanBrojDana;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void prilagodiDatePicker() {
+        DatePickerSettings dps
+                = new DatePickerSettings(new Locale("hr", "HR"));
+        dps.setFormatForDatesCommonEra(Pomocno.FORMAT_DATUMA);
+        dps.setTranslationClear("Očisti");
+        dps.setTranslationToday("Danas");
+       // dpDatum.setSettings(dps);
+    }
+
+   
     private void popuniView() {
+
+    }
+
+    private void pocistiView() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void popuniModel() {
+
+var d = obrada.getEntitet();
+       // d.setZaposlenik(lstZaposleniciUBazi.getSelectedValue()));
+       
 
     }
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import stanic.model.Godisnji;
 import javax.swing.table.AbstractTableModel;
+import stanic.model.Zaposlenik;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.swing.table.AbstractTableModel;
 public class GodisnjiTableModel extends AbstractTableModel {
     
     
-    private String[] colNames = new String[]{"Početak GO", "Završetak GO", "Iskorišteno dana"};
+    private String[] colNames = new String[]{"Početak GO", "Završetak GO", "Iskorišteno dana GO"};
 
     public Class[] m_colTypes = {Date.class, Date.class, Integer.class};
 
@@ -29,6 +30,9 @@ public class GodisnjiTableModel extends AbstractTableModel {
         df = new SimpleDateFormat("dd:MM:YYYY");
 
     }
+
+    
+    
 
     @Override
     public int getRowCount() {
@@ -57,8 +61,12 @@ public class GodisnjiTableModel extends AbstractTableModel {
                 } else {
                     return "";
                 }
-            case 3:
-                return p.getZaposlenik().getUkupanBrojDana();
+            case 2:
+                if (p.getZaposlenik()!= null) {
+                    return (p.getZaposlenik());
+                } else {
+                    return "";
+                }
          /*   case 4:
                 return p.isRoditeljskaPratnja();
             case 5:

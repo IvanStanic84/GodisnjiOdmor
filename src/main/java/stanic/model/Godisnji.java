@@ -14,10 +14,11 @@ import java.util.Date;
  * @author Korisnik
  */
 @Entity
-public class Godisnji extends Entitet {
+public class Godisnji extends Entitet{
 
     private Date pocetak;
     private Date kraj;
+   
 
     @ManyToOne
     private Zaposlenik zaposlenik;
