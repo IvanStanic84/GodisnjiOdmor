@@ -52,13 +52,13 @@ public class PocetniInsert {
     }
     
     private Date createDate(int godina, int mjesec,
-            int dan, int sat, int minute) {
+            int dan) {
         GregorianCalendar gc = (GregorianCalendar) Calendar.getInstance();
         gc.set(Calendar.YEAR, godina);
         gc.set(Calendar.MONTH, mjesec - 1);
         gc.set(Calendar.DAY_OF_MONTH, dan);
-        gc.set(Calendar.HOUR_OF_DAY, sat);
-        gc.set(Calendar.MINUTE, minute);
+        gc.set(Calendar.HOUR_OF_DAY, 0);
+        gc.set(Calendar.MINUTE, 0);
         gc.set(Calendar.SECOND, 0);
         gc.set((Calendar.MILLISECOND), 0);
         return gc.getTime();
@@ -70,9 +70,9 @@ public class PocetniInsert {
     
     private Godisnji prviOdmor() {
         Godisnji go = new Godisnji();
-        go.setZaposlenik(prviZaposlenik());
-        go.setPocetak(createDate(2022, 10, 03, 9, 0));
-        go.setKraj(createDate(2022, 10, 03, 12, 0));
+        go.setZaposlenik(zaposlenici.get(0));
+        go.setPocetak(createDate(2022, 10, 03));
+        go.setKraj(createDate(2022, 11, 03));
         
         sess.persist(go);
         return go;
