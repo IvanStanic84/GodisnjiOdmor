@@ -248,7 +248,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
 
     private void btnOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdustaniActionPerformed
 
-        ucitaj();
+        dispose();
 
 
     }//GEN-LAST:event_btnOdustaniActionPerformed

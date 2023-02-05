@@ -23,7 +23,7 @@ public class Zaposlenik extends Entitet {
     private String oib;
     private Integer ukupanBrojDana;
 
-    @ManyToMany(mappedBy = "zaposlenik")
+    @ManyToMany
     private List<Godisnji> odmori = new ArrayList<>();
 
     public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {

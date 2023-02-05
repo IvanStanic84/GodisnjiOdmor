@@ -22,8 +22,8 @@ public class Godisnji extends Entitet {
     private Date pocetak;
     private Date kraj;
 
-    @ManyToMany
-    private List<Zaposlenik> zaposlenici = new ArrayList<>();
+    @ManyToMany(mappedBy = "odmori")
+    private List<Zaposlenik> zaposlenici;
 
     public List<Zaposlenik> getZaposlenici() {
         return zaposlenici;
