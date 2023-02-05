@@ -5,7 +5,9 @@
 package stanic.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 
 import java.util.List;
 
@@ -21,8 +23,9 @@ public class Zaposlenik extends Entitet {
     private String oib;
     private Integer ukupanBrojDana;
 
-    //@OneToMany(mappedBy = "zaposlenik")
-    //private List<ZaposlenikGodisnji> zaposleniciUBazi;
+    @ManyToMany(mappedBy = "zaposlenik")
+    private List<Godisnji> odmori = new ArrayList<>();
+
     public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {
         this.ime = ime;
         this.prezime = prezime;
@@ -30,9 +33,6 @@ public class Zaposlenik extends Entitet {
         this.ukupanBrojDana = ukupanBrojDana;
 
     }
-
-    @OneToMany(mappedBy = "zaposlenik")
-    private List<Godisnji> odmori;
 
     public String getIme() {
         return ime;

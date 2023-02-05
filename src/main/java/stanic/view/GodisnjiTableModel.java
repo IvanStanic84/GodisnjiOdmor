@@ -62,11 +62,11 @@ public class GodisnjiTableModel extends AbstractTableModel {
                     return "";
                 }
             case 2:
-                if (p.getZaposlenik()!= null) {
-                    return (p.getZaposlenik());
+               /* if (p.setZaposlenici()) {
+                    return (p.getZaposlenici());
                 } else {
                     return "";
-                }
+                }*/
          /*   case 4:
                 return p.isRoditeljskaPratnja();
             case 5:

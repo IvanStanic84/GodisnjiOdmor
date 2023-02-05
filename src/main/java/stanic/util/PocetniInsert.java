@@ -70,10 +70,10 @@ public class PocetniInsert {
     
     private Godisnji prviOdmor() {
         Godisnji go = new Godisnji();
-        go.setZaposlenik(zaposlenici.get(0));
+        
         go.setPocetak(createDate(2022, 10, 03));
         go.setKraj(createDate(2022, 11, 03));
-        
+        go.getZaposlenici().add(zaposlenici.get(0));
         sess.persist(go);
         return go;
     }

@@ -5,9 +5,12 @@
 package stanic.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,18 +22,32 @@ public class Godisnji extends Entitet {
     private Date pocetak;
     private Date kraj;
 
-    @ManyToOne
-    private Zaposlenik zaposlenik;
+    @ManyToMany
+    private List<Zaposlenik> zaposlenici = new ArrayList<>();
+
+    public List<Zaposlenik> getZaposlenici() {
+        return zaposlenici;
+    }
+
+    public void setZaposlenici(List<Zaposlenik> zaposlenici) {
+        this.zaposlenici = zaposlenici;
+    }
 
     public Godisnji() {
     }
 
-    public Godisnji(Date pocetak, Date kraj, Zaposlenik zaposlenik, Integer sifra) {
+    public Godisnji(Date pocetak, Date kraj) {
+        this.pocetak = pocetak;
+        this.kraj = kraj;
+    }
+
+    public Godisnji(Date pocetak, Date kraj, Integer sifra) {
         super(sifra);
         this.pocetak = pocetak;
         this.kraj = kraj;
-        this.zaposlenik = zaposlenik;
     }
+
+  
 
     public Date getPocetak() {
         return pocetak;
@@ -48,16 +65,13 @@ public class Godisnji extends Entitet {
         this.kraj = kraj;
     }
 
-    public Zaposlenik getZaposlenik() {
-        return zaposlenik;
-    }
-
-    public void setZaposlenik(Zaposlenik zaposlenik) {
-        this.zaposlenik = zaposlenik;
-    }
-
+  
     @Override
     public String toString() {
-        return zaposlenik.getIme() + " " + zaposlenik.getPrezime();
+        return pocetak.toString();
+    }
+
+    public boolean setZaposlenici() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

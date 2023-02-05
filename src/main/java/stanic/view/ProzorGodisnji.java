@@ -44,8 +44,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     }
 
     private void postavke() {
-        setTitle(Pomocno.NAZIV_APLIKACIJE + " "
-                + " Godisnji odmori");
+        setTitle(Pomocno.NAZIV_APLIKACIJE);
         //ucitajZaposlenike();
     }
 
