@@ -227,6 +227,11 @@ public class ProzorGodisnji extends javax.swing.JFrame {
             return;
 
         }
+        DefaultListModel<Godisnji> m = new DefaultListModel<>();
+        for (Godisnji d : lstEntiteti.getSelectedValue().getOdmori()) {
+            m.addElement(d);
+        }
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
@@ -262,7 +267,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<Godisnji> lstEntiteti;
+    private javax.swing.JList<Zaposlenik> lstEntiteti;
     private javax.swing.JTable tblGodisnji;
     private javax.swing.JTextField txtPlaniranoDana;
     private javax.swing.JTextField txtPreostaloDana;

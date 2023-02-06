@@ -73,7 +73,7 @@ public class PocetniInsert {
         
         go.setPocetak(createDate(2022, 10, 03));
         go.setKraj(createDate(2022, 11, 03));
-        go.getZaposlenici().add(zaposlenici.get(0));
+        go.setZaposlenici((List<Zaposlenik>) zaposlenici.get(0));
         sess.persist(go);
         return go;
     }
