@@ -22,13 +22,13 @@ import stanic.model.Zaposlenik;
 public class PocetniInsert {
     
     private List<Godisnji> odmori;
-    private List<Zaposlenik> zaposlenici;
+   // private List<Zaposlenik> zaposlenici;
     private Session sess;
     
     public PocetniInsert() {
         
         odmori = new ArrayList<>();
-        zaposlenici = new ArrayList<>();
+        //zaposlenici = new ArrayList<>();
         
         sess = HibernateUtil.getSession();
         
@@ -74,13 +74,13 @@ public class PocetniInsert {
         
         go.setPocetak(createDate(2022, 10, 03));
         go.setKraj(createDate(2022, 11, 03));
-        go.getZaposlenici().add(zaposlenici.get(0));
+       
         sess.persist(go);
         return go;
     }
     
     private void kreirajZaposlenike() {
-        zaposlenici.add(prviZaposlenik());
+       // zaposlenici.add(prviZaposlenik());
     }
     
     private Zaposlenik prviZaposlenik() {

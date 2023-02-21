@@ -22,15 +22,15 @@ public class Godisnji extends Entitet {
     private Date pocetak;
     private Date kraj;
 
-    @ManyToMany(mappedBy = "odmori")
-    private List<Zaposlenik> zaposlenici;
+    @ManyToOne
+    private Zaposlenik zaposlenik;
 
-    public List<Zaposlenik> getZaposlenici() {
-        return zaposlenici;
+    public Zaposlenik getZaposlenik() {
+        return zaposlenik;
     }
 
-    public void setZaposlenici(List<Zaposlenik> zaposlenici) {
-        this.zaposlenici = zaposlenici;
+    public void setZaposlenik(Zaposlenik zaposlenik) {
+        this.zaposlenik = zaposlenik;
     }
 
     public Godisnji() {
@@ -46,8 +46,6 @@ public class Godisnji extends Entitet {
         this.pocetak = pocetak;
         this.kraj = kraj;
     }
-
-  
 
     public Date getPocetak() {
         return pocetak;
@@ -65,13 +63,9 @@ public class Godisnji extends Entitet {
         this.kraj = kraj;
     }
 
-  
     @Override
     public String toString() {
         return pocetak.toString();
     }
 
-    public boolean setZaposlenici() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

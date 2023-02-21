@@ -5,10 +5,7 @@
 package stanic.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
-
 import java.util.List;
 
 /**
@@ -23,15 +20,30 @@ public class Zaposlenik extends Entitet {
     private String oib;
     private Integer ukupanBrojDana;
 
-    @ManyToMany
-    private List<Godisnji> odmori = new ArrayList<>();
+    @OneToMany(mappedBy = "zaposlenik")
+    private List<Godisnji> godisnji;
 
-    public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {
+    public List<Godisnji> getGodisnji() {
+        return godisnji;
+    }
+
+    public void setGodisnji(List<Godisnji> godisnji) {
+        this.godisnji = godisnji;
+    }
+
+    public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana) {
         this.ime = ime;
         this.prezime = prezime;
         this.oib = oib;
         this.ukupanBrojDana = ukupanBrojDana;
+    }
 
+    public Zaposlenik(String ime, String prezime, String oib, Integer ukupanBrojDana, Integer sifra) {
+        super(sifra);
+        this.ime = ime;
+        this.prezime = prezime;
+        this.oib = oib;
+        this.ukupanBrojDana = ukupanBrojDana;
     }
 
     public String getIme() {
@@ -68,14 +80,6 @@ public class Zaposlenik extends Entitet {
 
     public Zaposlenik() {
         super();
-    }
-
-    public List<Godisnji> getOdmori() {
-        return odmori;
-    }
-
-    public void setOdmori(List<Godisnji> odmori) {
-        this.odmori = odmori;
     }
 
     @Override

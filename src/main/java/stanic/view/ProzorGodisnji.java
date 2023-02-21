@@ -227,10 +227,10 @@ public class ProzorGodisnji extends javax.swing.JFrame {
             return;
 
         }
-        DefaultListModel<Godisnji> m = new DefaultListModel<>();
-        for (Godisnji d : lstEntiteti.getSelectedValue().getOdmori()) {
-            m.addElement(d);
-        }
+        //DefaultListModel<Godisnji> m = new DefaultListModel<>();
+        //for (Godisnji d : lstEntiteti.getSelectedValue().getOdmori()) {
+         //   m.addElement(d);
+        //}
         
     }//GEN-LAST:event_lstEntitetiValueChanged
 
@@ -294,7 +294,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private void popuniModel() {
 
         var d = obrada.getEntitet();
-        d.setZaposlenici( zaposlenici);
+       // d.setZaposlenici( zaposlenici);
 
     }
 
