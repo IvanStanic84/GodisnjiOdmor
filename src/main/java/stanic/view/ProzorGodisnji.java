@@ -5,6 +5,7 @@
 package stanic.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -29,6 +30,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private ObradaZaposlenik obradaZaposlenik;
     private Izbornik izbornik;
     private int selectedIndex;
+    private List<Zaposlenik> zaposlenici;
 
     /**
      * Creates new form ProzorGodisnjiOdmori
@@ -45,14 +47,12 @@ public class ProzorGodisnji extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Pomocno.NAZIV_APLIKACIJE);
-        //ucitajZaposlenike();
+        popuniModel();
     }
 
     private void ucitaj() {
-        /* lstEntiteti.setModel(new GodisnjiListModel<>(obrada.read()));
-        if (lstEntiteti.getModel().getSize() > 0) {
-            lstEntiteti.setSelectedIndex(selectedIndex);
-        }*/
+         lstEntiteti.setModel(new GodisnjiListModel<>(obrada.read()));
+       
 
     }
 
@@ -223,7 +223,7 @@ public class ProzorGodisnji extends javax.swing.JFrame {
         if (evt.getValueIsAdjusting()
                 || lstEntiteti.getSelectedValue() == null) {
             pocistiView();
-            // obrada.setEntitet(lstEntiteti.getSelectedValue());
+          
             return;
 
         }
@@ -294,7 +294,13 @@ public class ProzorGodisnji extends javax.swing.JFrame {
     private void popuniModel() {
 
         var d = obrada.getEntitet();
-        // d.setZaposlenik(lstEntiteti.getSelectedValue());
+        d.setZaposlenici( zaposlenici);
+
+    }
+
+    private void ucitajZaposlenike() {
+
+
 
     }
 }
