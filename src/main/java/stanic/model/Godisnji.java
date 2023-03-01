@@ -21,7 +21,7 @@ public class Godisnji extends Entitet {
 
     private Date pocetak;
     private Date kraj;
-
+//private Integer 
     @ManyToOne
     private Zaposlenik zaposlenik;
 
