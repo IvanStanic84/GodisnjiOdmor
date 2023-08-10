@@ -98,6 +98,11 @@ df = new SimpleDateFormat("dd. MMMM yyyy.");
         jLabel4.setText("Dana GO");
 
         lstOdmori.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstOdmori.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstOdmoriValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstOdmori);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,13 +189,22 @@ df = new SimpleDateFormat("dd. MMMM yyyy.");
             obrada.refresh();
             JOptionPane.showMessageDialog(rootPane,
                     e.getPoruka());
-
+        }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
-        /**
-         * @param args the command line arguments
-         */
-    }
+    private void lstOdmoriValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstOdmoriValueChanged
+ if (evt.getValueIsAdjusting()
+         
+         //upitno!!!!!
+                || lstOdmori.getSelectedValue() == null) {
+            return;
+        }
+
+        txtVrstaRibe.setText(lstRibiciNaNatjecanju.getSelectedValue().getVrstaRibe());
+        txtMasa.setText(lstRibiciNaNatjecanju.getSelectedValue().getMasa());
+    }//GEN-LAST:event_lstOdmoriValueChanged
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPromjeni;
@@ -203,7 +217,7 @@ df = new SimpleDateFormat("dd. MMMM yyyy.");
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<Zaposlenik> lstEntiteti;
-    private javax.swing.JList<String> lstOdmori;
+    private javax.swing.JList<ZaposlenikGodisnji> lstOdmori;
     private javax.swing.JTextField txtDanaGO;
     private javax.swing.JTextField txtPreostaloDana;
     // End of variables declaration//GEN-END:variables
@@ -282,4 +296,6 @@ df = new SimpleDateFormat("dd. MMMM yyyy.");
         return zg;
 
     }
+    
+    
 }

@@ -22,20 +22,20 @@ import stanic.model.Zaposlenik;
 public class PocetniInsert {
     
     private List<Godisnji> odmori;
-   // private List<Zaposlenik> zaposlenici;
+   private List<Zaposlenik> zaposlenici;
     private Session sess;
     
     public PocetniInsert() {
         
         odmori = new ArrayList<>();
-        //zaposlenici = new ArrayList<>();
+        zaposlenici = new ArrayList<>();
         
         sess = HibernateUtil.getSession();
         
         sess.beginTransaction();
         kreirajOperatera();
         kreirajZaposlenike();
-        kreirajGodisnjeOdmore();
+       // kreirajGodisnjeOdmore();
         
         
         sess.getTransaction().commit();
@@ -65,7 +65,7 @@ public class PocetniInsert {
         return gc.getTime();
     }
     
-    private void kreirajGodisnjeOdmore() {
+   /* private void kreirajGodisnjeOdmore() {
         odmori.add(prviOdmor());
     }
     
@@ -77,10 +77,11 @@ public class PocetniInsert {
        
         sess.persist(go);
         return go;
-    }
+    }*/
     
     private void kreirajZaposlenike() {
-       // zaposlenici.add(prviZaposlenik());
+       zaposlenici.add(prviZaposlenik());
+       zaposlenici.add(drugiZaposlenik());
     }
     
     private Zaposlenik prviZaposlenik() {
@@ -94,4 +95,15 @@ public class PocetniInsert {
         sess.persist(z);
         return z;
     }
+
+    private Zaposlenik drugiZaposlenik() {
+Zaposlenik z = new Zaposlenik();
+        
+        z.setIme("Makko");
+        z.setPrezime("Marić");
+        z.setOib("76734269357");
+        z.setUkupanBrojDana(20);
+        
+        sess.persist(z);
+        return z;    }
 }
