@@ -200,8 +200,7 @@ df = new SimpleDateFormat("dd. MMMM yyyy.");
             return;
         }
 
-        txtVrstaRibe.setText(lstRibiciNaNatjecanju.getSelectedValue().getVrstaRibe());
-        txtMasa.setText(lstRibiciNaNatjecanju.getSelectedValue().getMasa());
+ 
     }//GEN-LAST:event_lstOdmoriValueChanged
 
     
